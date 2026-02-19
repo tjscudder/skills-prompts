@@ -8,7 +8,7 @@ description: >
   "help me figure out", "I don't know how to approach", "what should I do about",
   "how do I solve", "I need a plan for", "help me think through", or "I'm not sure
   what the real issue is". Also trigger when the user invokes /problem-architect or
-  says "problem architect" explicitly.
+  /problemarchitect or says "problem architect" explicitly.
 ---
 
 # Problem Architect — Structured Problem Solving

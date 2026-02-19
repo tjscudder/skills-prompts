@@ -155,7 +155,7 @@ If file upload isn't working, you can add the skill manually:
 
 Start a new conversation and use one of these triggers:
 
-- `/project-architect`
+- `/project-architect` or `/projectarchitect`
 - "Help me set up a new project"
 - "Create a project for [your use case]"
 - "New project wizard"
@@ -173,7 +173,7 @@ Simply describe what you need, for example:
 
 > "I need to create a project for code reviews and architecture planning"
 
-Or just say `/project-architect` and the wizard will ask what you're building.
+Or just say `/project-architect` (or `/projectarchitect`) and the wizard will ask what you're building.
 
 ### During the Interview
 
@@ -244,7 +244,7 @@ This mode analyzes what you have and proposes targeted improvements rather than 
 ## 8. Troubleshooting
 
 **"The skill isn't activating"**
-Make sure the skill file is properly added to your Project Knowledge or global Settings. Try explicitly saying `/project-architect` or "use the project architect skill".
+Make sure the skill file is properly added to your Project Knowledge or global Settings. Try explicitly saying `/project-architect` (or `/projectarchitect`) or "use the project architect skill".
 
 **"I want to restart from a specific step"**
 Say "Let's go back to Step [number]" or "I want to redo the [section name]".

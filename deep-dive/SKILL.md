@@ -7,7 +7,7 @@ description: >
   get up to speed on a subject, or says things like "teach me about",
   "explain", "what is", "how does X work", "I want to understand",
   "deep dive into", "walk me through", or "help me learn". Also trigger
-  when the user invokes /deep-dive or says "deep dive" explicitly. This
+  when the user invokes /deep-dive or /deepdive or says "deep dive" explicitly. This
   skill is designed for on-the-spot learning within any conversation context.
 ---
 

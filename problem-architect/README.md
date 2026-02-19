@@ -83,25 +83,35 @@ Each phase produces a structured summary (e.g., `SURFACE_SUMMARY`, `DIAGNOSIS_SU
 
 ## 4. Installation: Claude.AI
 
-### Option 1: Project-Specific Installation
+### Option 1: Global Installation (All Chats)
 
-1. Open Claude.ai and navigate to your Project (or create a new one)
-2. In the Project Knowledge section, click "Add content"
-3. Upload the `SKILL.md` file
-4. The skill is now available in that Project's conversations
-
-### Option 2: Global Installation
+To make the skill available across ALL your Claude conversations:
 
 1. Open Claude.ai and click on your profile icon (bottom-left)
 2. Select "Settings"
-3. Navigate to "Capabilities" or "Custom Instructions"
-4. Upload or paste the contents of `SKILL.md`
-5. Save your settings
+3. Navigate to the "Capabilities" section
+4. Under Skills or Custom Instructions, click "Add" or "Upload"
+5. Upload the `problem-architect.skill` file (Claude will extract and read the SKILL.md inside)
+6. Save your settings
+7. The skill is now available in ALL your conversations, not just projects
+
+### Option 2: Project-Specific Installation
+
+To use this skill only within a specific Project:
+
+1. Open Claude.ai and navigate to your Project (or create a new one)
+2. In the Project Knowledge section, click "Add content"
+3. Select "Upload files" and choose the `problem-architect.skill` file (Claude will extract and read the SKILL.md inside)
+4. The skill is now available in that Project's conversations only
 
 ### Option 3: Manual Installation (Copy/Paste)
 
-1. Open `SKILL.md` and copy the entire contents
-2. Paste into either:
+If file upload isn't working, you can add the skill manually:
+
+1. Unzip the .skill file (it's a ZIP archive -- rename to .zip if needed)
+2. Open the extracted `problem-architect/SKILL.md` file
+3. Copy the entire contents
+4. Paste into either:
    - Settings > Capabilities (for global access), or
    - Project Knowledge (for project-specific access)
 
@@ -111,7 +121,7 @@ Each phase produces a structured summary (e.g., `SURFACE_SUMMARY`, `DIAGNOSIS_SU
 
 Use one of these triggers in any conversation:
 
-- `/problem-architect`
+- `/problem-architect` or `/problemarchitect`
 - "I have a problem"
 - "I'm stuck on..."
 - "Help me figure out..."
@@ -184,7 +194,7 @@ When you exit mid-process, the skill summarizes your progress. Re-enter by sayin
 ## 7. Troubleshooting
 
 **"The skill isn't activating"**
-Make sure the SKILL.md file is properly added to your Project Knowledge or global Settings. Try explicitly saying `/problem-architect`.
+Make sure the skill file is properly added to your Project Knowledge or global Settings. Try explicitly saying `/problem-architect` (or `/problemarchitect`).
 
 **"It's jumping to solutions too quickly"**
 The skill is designed to resist this, but if it happens, say "let's go back to diagnosing" or "I don't think we've found the root cause yet."
@@ -204,9 +214,17 @@ This is normal and expected. The skill supports problem pivots -- it will acknow
 
 ```
 problem-architect/
-├── SKILL.md     # The skill definition (5-phase problem-solving system)
-└── README.md    # This file
+├── problem-architect.skill    # ZIP archive containing the Claude skill
+│   └── problem-architect/
+│       └── SKILL.md           # The Claude skill definition (5-phase problem-solving system)
+├── SKILL.md                   # The skill definition (also available standalone)
+└── README.md                  # This file
 ```
+
+To inspect or modify the Claude skill:
+1. Rename `.skill` to `.zip` (or just unzip directly)
+2. Edit SKILL.md as needed
+3. Re-zip the folder and rename back to `.skill`
 
 ---
 

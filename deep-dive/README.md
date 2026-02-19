@@ -58,25 +58,35 @@ At any point you can request a **Summary & Resources** reference that includes:
 
 ## 4. Installation: Claude.AI
 
-### Option 1: Project-Specific Installation
+### Option 1: Global Installation (All Chats)
 
-1. Open Claude.ai and navigate to your Project (or create a new one)
-2. In the Project Knowledge section, click "Add content"
-3. Upload the `SKILL.md` file
-4. The skill is now available in that Project's conversations
-
-### Option 2: Global Installation
+To make the skill available across ALL your Claude conversations:
 
 1. Open Claude.ai and click on your profile icon (bottom-left)
 2. Select "Settings"
-3. Navigate to "Capabilities" or "Custom Instructions"
-4. Upload or paste the contents of `SKILL.md`
-5. Save your settings
+3. Navigate to the "Capabilities" section
+4. Under Skills or Custom Instructions, click "Add" or "Upload"
+5. Upload the `deep-dive.skill` file (Claude will extract and read the SKILL.md inside)
+6. Save your settings
+7. The skill is now available in ALL your conversations, not just projects
+
+### Option 2: Project-Specific Installation
+
+To use this skill only within a specific Project:
+
+1. Open Claude.ai and navigate to your Project (or create a new one)
+2. In the Project Knowledge section, click "Add content"
+3. Select "Upload files" and choose the `deep-dive.skill` file (Claude will extract and read the SKILL.md inside)
+4. The skill is now available in that Project's conversations only
 
 ### Option 3: Manual Installation (Copy/Paste)
 
-1. Open `SKILL.md` and copy the entire contents
-2. Paste into either:
+If file upload isn't working, you can add the skill manually:
+
+1. Unzip the .skill file (it's a ZIP archive -- rename to .zip if needed)
+2. Open the extracted `deep-dive/SKILL.md` file
+3. Copy the entire contents
+4. Paste into either:
    - Settings > Capabilities (for global access), or
    - Project Knowledge (for project-specific access)
 
@@ -86,7 +96,7 @@ At any point you can request a **Summary & Resources** reference that includes:
 
 Use one of these triggers in any conversation:
 
-- `/deep-dive`
+- `/deep-dive` or `/deepdive`
 - "Deep dive into [topic]"
 - "Teach me about [topic]"
 - "Explain [topic]"
@@ -147,7 +157,7 @@ When you exit, the skill summarizes where you got to and what you covered. You c
 ## 7. Troubleshooting
 
 **"The skill isn't activating"**
-Make sure the SKILL.md file is properly added to your Project Knowledge or global Settings. Try explicitly saying `/deep-dive` or "deep dive into [topic]".
+Make sure the skill file is properly added to your Project Knowledge or global Settings. Try explicitly saying `/deep-dive` (or `/deepdive`) or "deep dive into [topic]".
 
 **"The content is too basic / too advanced"**
 The skill adapts to contextual cues. If you're clearly technical, mention your background. You can also skip ahead to later phases at any time.
@@ -164,9 +174,17 @@ Say "summary and resources" at any point to get a structured reference.
 
 ```
 deep-dive/
-├── SKILL.md     # The skill definition (4-phase learning system)
-└── README.md    # This file
+├── deep-dive.skill    # ZIP archive containing the Claude skill
+│   └── deep-dive/
+│       └── SKILL.md   # The Claude skill definition (4-phase learning system)
+├── SKILL.md           # The skill definition (also available standalone)
+└── README.md          # This file
 ```
+
+To inspect or modify the Claude skill:
+1. Rename `.skill` to `.zip` (or just unzip directly)
+2. Edit SKILL.md as needed
+3. Re-zip the folder and rename back to `.skill`
 
 ---
 

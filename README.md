@@ -18,25 +18,21 @@ A collection of interactive Claude skills, prompt configurations, and shared fra
 
 | Skill | Command | Description |
 |-------|---------|-------------|
-| Prompt Architect | `/createprompt` | Start the 9-step prompt creation wizard |
-| Project Architect | `/project-architect` | Start the project configuration wizard |
-| Problem Architect | `/problem-architect` | Start the structured problem-solving system |
-| Deep Dive | `/deep-dive` | Start progressive learning on any topic |
+| Prompt Architect | `/createprompt` or `/create-prompt` | Start the 9-step prompt creation wizard |
+| Project Architect | `/project-architect` or `/projectarchitect` | Start the project configuration wizard |
+| Problem Architect | `/problem-architect` or `/problemarchitect` | Start the structured problem-solving system |
+| Deep Dive | `/deep-dive` or `/deepdive` | Start progressive learning on any topic |
 
 ## Installation
 
 ### Skills (.skill files)
+
+All skills use the `.skill` file format (a ZIP archive containing the skill definition):
 
 1. Open [Claude.ai](https://claude.ai)
 2. Navigate to your Project (or create one)
 3. In Project Knowledge, click "Add content"
 4. Upload the `.skill` file from the skill's folder
 5. Start a new conversation and use the skill's command
-
-### Deep Dive (SKILL.md)
-
-1. Open [Claude.ai](https://claude.ai)
-2. Navigate to your Project
-3. Upload `deep-dive/SKILL.md` to Project Knowledge
 
 See each folder's README for detailed installation options including global installation and manual setup.

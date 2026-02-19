@@ -147,7 +147,7 @@ If file upload isn't working, you can add the skill manually:
 
 Start a new conversation in your Project and use one of these triggers:
 
-- `/createprompt`
+- `/createprompt` or `/create-prompt`
 - "Help me create a prompt"
 - "Build a prompt for [your use case]"
 - "Design a system prompt"
@@ -165,7 +165,7 @@ Simply describe what you need, for example:
 
 > "I need to create a prompt for extracting customer information from support emails"
 
-Or just say `/createprompt` and the wizard will ask what you're building.
+Or just say `/createprompt` (or `/create-prompt`) and the wizard will ask what you're building.
 
 ### During the Interview
 
@@ -347,7 +347,7 @@ If you'll use the prompt across multiple models, use universally robust formats:
 ## 8. Troubleshooting
 
 **"The skill isn't activating"**
-Make sure the skill file is properly added to your Project Knowledge. Try explicitly saying `/createprompt` or "use the prompt architect skill".
+Make sure the skill file is properly added to your Project Knowledge. Try explicitly saying `/createprompt` (or `/create-prompt`) or "use the prompt architect skill".
 
 **"I want to restart from a specific step"**
 Say "Let's go back to Step [number]" or "I want to redo the [section name]".
