@@ -29,6 +29,74 @@ When triggered, ask the user for the topic if not already clear. Then begin at P
 
 If the user is already mid-conversation about a topic and invokes the skill, infer the topic from context and confirm: "I'll do a deep dive on [topic] — starting with the big picture. Ready?"
 
+## Handoff Intake Protocol
+
+This skill can receive context from **solution-architect** via a structured HANDOFF_CONTEXT block. When this happens, the skill calibrates its starting point and depth based on the accumulated context.
+
+### Detecting a Handoff
+
+If the user's first message contains a `HANDOFF_CONTEXT:` block with `target_skill: deep-dive`:
+
+1. **Parse the block** and acknowledge the source context
+2. **Map handoff fields to skill behavior:**
+
+   | Handoff Field | Effect |
+   |---------------|--------|
+   | `problem_summary` | Identifies the topic to learn about |
+   | `key_findings` | Provides existing context — skip what the user already knows |
+   | `accumulated_decisions.expertise_level` | Calibrates starting phase (skip Phase 1 for experts) |
+   | `accumulated_decisions.domain` | Adapts tone and terminology |
+   | `suggested_starting_point` | Indicates which phase to begin at and which direction to take |
+   | `target_reason` | Clarifies the specific learning need (e.g., "needs to understand X to make a decision about Y") |
+
+3. **Present a brief summary** of what's being inherited:
+
+   ```
+   Picking up from Solution Architect. Here's the learning context:
+
+   - Topic: [extracted from problem_summary/target_reason]
+   - You already know: [summary of key_findings]
+   - Starting at: Phase [N] — [phase name]
+   - Focus: [from target_reason — e.g., "understanding X to unblock your decision about Y"]
+
+   Ready to dive in? (Yes to continue, or adjust the starting point)
+   ```
+
+4. **Wait for confirmation** before starting
+
+### Calibration Behavior
+
+Based on `expertise_level`:
+- **Beginner/unfamiliar:** Start at Phase 1 (Orientation)
+- **Some familiarity:** Start at Phase 2 (Mechanics), briefly recap Phase 1 key terms
+- **Practitioner:** Start at Phase 3 (Application) or Phase 4 (Expert Territory)
+
+Based on `target_reason`:
+- If the learning need is practical (e.g., "needs to know how to use X"), bias toward Phase 3
+- If the learning need is evaluative (e.g., "needs to decide between X and Y"), bias toward Phase 2 with a "How it compares" direction
+- If the learning need is deep (e.g., "needs to understand internals of X"), bias toward Phase 4
+
+### Handoff Back to Solution Architect
+
+When the user completes their learning and wants to return to problem-solving, produce a brief summary:
+
+```
+LEARNING COMPLETE — RETURNING TO SOLUTION ARCHITECT
+
+Topic covered: [topic]
+Key takeaways:
+- [Takeaway 1]
+- [Takeaway 2]
+- [Takeaway 3]
+
+You can now return to your Solution Architect session with this context.
+Copy this summary and paste it into your Solution Architect conversation to continue where you left off.
+```
+
+### When No Handoff is Present
+
+Proceed with the standard invocation behavior as normal. The handoff protocol is purely additive.
+
 ## Phase Structure
 
 There are four phases. Each phase ends with navigation options. The user can:
